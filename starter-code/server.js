@@ -23,8 +23,8 @@ app.get('/new', function(request, response) {
 
 app.get('/articles', function(request, response) {
   // REVIEW: This query will join the data together from our tables and send it back to the client.
-  // TODO: Write a SQL query which joins all data from articles and authors tables on the author_id value of each
-  client.query(``)
+  // DONE: Write a SQL query which joins all data from articles and authors tables on the author_id value of each
+  client.query('SELECT ar.*, au.author, au."authorUrl" FROM articles ar JOIN authors au ON ar.author_id = au.author_id;')
   .then(function(result) {
     response.send(result.rows);
   })
